@@ -1,10 +1,10 @@
 // src/features/campaignSlice.ts
 
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { CampaignData } from './campaignData'; // Modelleri içe aktar
 import { fetchCampaigns } from '../../api/campaignApi'; // Yeni api dosyasından işlemi içe aktar
 
-interface CampaignState {
+export interface CampaignState {
   campaigns: CampaignData[];
 }
 
