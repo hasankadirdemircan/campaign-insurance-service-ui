@@ -1,2 +1,3 @@
-# campaign-insurance-service-ui
-this repository includes https://github.com/hasankadirdemircan/campaign-insurance-service backend project's ui that is written in reactJs
+sudo npx create-react-app . --template typescript 
+sudo npm install bootstrap react-bootstrap
+
