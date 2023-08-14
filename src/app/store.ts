@@ -1,8 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './rootReducer';
+// src/app/store.ts
 
-const store = configureStore({
-  reducer: rootReducer,
+import { configureStore } from '@reduxjs/toolkit';
+import campaignReducer from '../features/campaign/campaignSlice';
+
+export const store = configureStore({
+  reducer: {
+    campaigns: campaignReducer,
+  },
 });
 
-export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
