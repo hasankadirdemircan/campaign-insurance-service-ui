@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCampaigns } from '../api/campaignApi';
 import { AppDispatch } from '../app/store'; 
 import { RootState }  from "../app/types"
+import { Button, Container, Table } from 'react-bootstrap';
 
 const CampaignList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -16,22 +17,37 @@ const CampaignList: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Campaign List</h1>
-      <ul>
-        {campaigns.map((item) => {
+    <Container className='mt-4'>
+    <Table  hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Detail</th>
+          <th>Category</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {campaigns.map((item, index) => {
           const campaign = item.campaign;
           return (
-            <li key={campaign.id}>
-              <h2>{campaign.campaignTitle}</h2>
-              <p>{campaign.campaignDetail}</p>
-              <p>Category: {campaign.campaignCategory}</p>
-              <p>Status: {campaign.campaignStatus}</p>
-            </li>
-          );
+            <tr key={campaign.id}>
+              <td>{index + 1}</td>
+              <td>{campaign.campaignTitle}</td>
+              <td>{campaign.campaignDetail}</td>
+              <td>{campaign.campaignCategory}</td>
+              <td>{campaign.campaignStatus}</td>
+              <td>
+                <Button variant='outline-danger' size='sm'> DELETE </Button>
+              </td>
+            </tr>
+          )
         })}
-      </ul>
-    </div>
+      </tbody>
+    </Table>
+  </Container>
+
   );
 };
 
