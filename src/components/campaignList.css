@@ -1,0 +1,14 @@
+/* Toast mesajı yavaşça kaybolma efekti */
+.fade-out-toast {
+    animation: fadeOut 10s ease forwards;
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
