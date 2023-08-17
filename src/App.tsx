@@ -3,8 +3,8 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavBar } from './components/NavBar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { CreateCampaignForm } from './components/CreateCampaignForm';
 import { Home } from './components/Home';
+import CreateCampaignForm from './components/CreateCampaignForm';
 
 function App() {
   return (
