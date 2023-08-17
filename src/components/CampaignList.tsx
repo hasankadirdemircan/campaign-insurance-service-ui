@@ -17,7 +17,7 @@ const CampaignList: React.FC = () => {
 
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleDeleteClick = (campaign: any) => {
+  const handleDeleteClick = (campaign: Campaign) => {
     setSelectedCampaign(campaign);
     setShowConfirmation(true);
   };
