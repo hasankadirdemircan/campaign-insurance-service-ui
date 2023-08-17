@@ -8,11 +8,11 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
- 
-    <React.StrictMode>
-       <Provider store={store}> {/* Provider'ı ekliyoruz ve store'u iletiyoruz */}
-        <App />
-      </Provider>
-    </React.StrictMode>
+
+  <React.StrictMode>
+    <Provider store={store}> {/* Provider'ı ekliyoruz ve store'u iletiyoruz */}
+      <App />
+    </Provider>
+  </React.StrictMode>
 
 );

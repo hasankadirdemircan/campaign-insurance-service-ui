@@ -9,16 +9,16 @@ import { Home } from './components/Home';
 function App() {
   return (
     <div className="App">
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/create-insurance" element={<CreateCampaignForm />} />
-        <Route path="*" element={<h1> PAGE NOT FOUND </h1>} />
-      </Routes>
-    </Router>
-  </div>
-);
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/create-insurance" element={<CreateCampaignForm />} />
+          <Route path="*" element={<h1> PAGE NOT FOUND </h1>} />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

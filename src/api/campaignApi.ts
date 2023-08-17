@@ -24,7 +24,7 @@ export const deleteCampaign = createAsyncThunk('campaigns/deleteCampaign', async
 
     if (response.ok) {
       // İstek başarılı bir şekilde tamamlandı.
-      return null; 
+      return null;
     } else {
       const errorMessage = await response.text();
       return thunkAPI.rejectWithValue(errorMessage);

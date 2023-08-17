@@ -4,7 +4,7 @@ import { deleteCampaign, fetchCampaigns } from '../api/campaignApi';
 import { AppDispatch } from '../app/store';
 import { RootState } from "../app/types";
 import { Button, Container, Modal, Table, Toast, ToastContainer } from 'react-bootstrap';
-import './CampaignList.css'; // Stil dosyasını import edin
+import './CampaignList.css';
 
 const CampaignList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -65,7 +65,7 @@ const CampaignList: React.FC = () => {
           })}
         </tbody>
       </Table>
-     
+
       <Modal show={showConfirmation} onHide={() => setShowConfirmation(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Confirm Deletion</Modal.Title>
@@ -85,7 +85,7 @@ const CampaignList: React.FC = () => {
             <strong className='me-auto'>Notification</strong>
             <button type="button" className="btn-close" aria-label="Close" onClick={() => setShowToast(false)}></button>
           </Toast.Header>
-          <Toast.Body className={selectedCampaign ? 'bg-success text-white' :''}>
+          <Toast.Body className={selectedCampaign ? 'bg-success text-white' : ''}>
             {selectedCampaign ? `Campaign '${selectedCampaign.campaignTitle}' has been deleted.` : ''}
           </Toast.Body>
         </Toast>
