@@ -4,7 +4,7 @@ import { deleteCampaign, fetchCampaigns } from '../api/campaignApi';
 import { AppDispatch } from '../app/store';
 import { RootState } from "../app/types";
 import { Button, Container, Modal, Table, Toast, ToastContainer } from 'react-bootstrap';
-import './campaignList.css'; // Stil dosyasını import edin
+import './CampaignList.css'; // Stil dosyasını import edin
 
 const CampaignList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -90,6 +90,7 @@ const CampaignList: React.FC = () => {
           </Toast.Body>
         </Toast>
       </ToastContainer>
+
     </Container>
 
   );
