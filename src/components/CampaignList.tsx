@@ -5,6 +5,7 @@ import { AppDispatch } from '../app/store';
 import { RootState } from "../app/types";
 import { Button, Container, Modal, Table, Toast, ToastContainer } from 'react-bootstrap';
 import './CampaignList.css';
+import { Campaign } from '../features/campaign/models/campaign';
 
 const CampaignList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -12,7 +13,7 @@ const CampaignList: React.FC = () => {
   const campaigns = useSelector((state: RootState) => state.campaign.campaigns);
 
   const [showToast, setShowToast] = useState(false);
-  const [selectedCampaign, setSelectedCampaign] = useState<any>(null);
+  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
 
   const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -23,7 +24,9 @@ const CampaignList: React.FC = () => {
 
   const handleDeleteConfirmed = () => {
     // Kampanyayı silme işlemi burada
-    dispatch(deleteCampaign(selectedCampaign.id));
+    if (selectedCampaign) {
+      dispatch(deleteCampaign(selectedCampaign.id));
+    }
     setShowConfirmation(false);
     setShowToast(true);
     setTimeout(() => {
