@@ -1,4 +1,4 @@
-import { CampaignState } from '../features/campaign/campaignSlice';
+import { CampaignState } from './campaignSlice';
 // Diğer state tiplerini buraya ekleyin
 
 // Tüm reducer state tiplerini birleştirin

@@ -1,7 +1,7 @@
 // src/app/store.ts
 
 import { combineReducers } from '@reduxjs/toolkit';
-import campaignReducer from '../features/campaign/campaignSlice';
+import campaignReducer from './campaignSlice';
 
 const rootReducer = combineReducers({
   campaign: campaignReducer,

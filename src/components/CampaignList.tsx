@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteCampaign, fetchCampaigns } from '../api/campaignApi';
-import { AppDispatch } from '../app/store';
-import { RootState } from "../app/types";
+import { AppDispatch } from '../store/store';
+import { RootState } from "../store/types";
 import { Button, Container, Modal, Spinner, Table, Toast, ToastContainer } from 'react-bootstrap';
 import './CampaignList.css';
 import { Campaign } from '../features/campaign/models/campaign';
