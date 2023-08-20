@@ -13,13 +13,18 @@ const LoadingModal: React.FC = () => {
       keyboard={false}
       centered
     >
+
       <Modal.Body className='modal-content'>
         <div className="d-flex justify-content-center align-items-center">
-          <Spinner animation="grow" role="status" variant="primary">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          <Spinner animation="grow" role="status" variant="primary" />
+          <div className="mx-2">
+            <span>
+              İşlem Yapılıyor Lütfen Bekleyiniz.
+            </span>
+          </div>
         </div>
       </Modal.Body>
+
     </Modal>
   );
 };

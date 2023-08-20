@@ -40,7 +40,6 @@ const CampaignList: React.FC = () => {
   return (
     <div className="campaign-list-container">
       <Container className="mt-4">
-
         <Table responsive hover>
           <thead>
             <tr>
