@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteCampaign, fetchCampaigns } from '../api/campaignApi';
 import { AppDispatch } from '../store/store';
 import { RootState } from "../store/types";
-import { Button, Container, Modal, Spinner, Table, Toast, ToastContainer } from 'react-bootstrap';
+import { Button, Container, Modal, Table, Toast, ToastContainer } from 'react-bootstrap';
 import './CampaignList.css';
 import { Campaign } from '../features/campaign/models/campaign';
 
@@ -11,7 +11,6 @@ const CampaignList: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const campaigns = useSelector((state: RootState) => state.campaign.campaigns);
-  const loading = useSelector((state: RootState) => state.campaign.loading); // Redux store'dan loading durumunu alın
 
   const [showToast, setShowToast] = useState(false);
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
@@ -40,15 +39,7 @@ const CampaignList: React.FC = () => {
 
   return (
     <div className="campaign-list-container">
-      {loading && (
-        <div className="loading-overlay">
-          <Spinner animation="border" role="status" variant="light">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        </div>
-      )}
-
-      <Container className={`mt-4 ${loading ? 'blur' : ''}`}>
+      <Container className="mt-4">
 
         <Table responsive hover>
           <thead>
@@ -80,7 +71,7 @@ const CampaignList: React.FC = () => {
         </Table>
 
 
-        <Modal show={showConfirmation} onHide={() => setShowConfirmation(false)}>
+        <Modal show={showConfirmation} onHide={() => setShowConfirmation(false)} centered>
           <Modal.Header closeButton>
             <Modal.Title>Confirm Deletion</Modal.Title>
           </Modal.Header>

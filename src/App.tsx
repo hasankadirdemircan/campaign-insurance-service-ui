@@ -5,6 +5,7 @@ import { NavBar } from './components/NavBar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
 import CreateCampaignForm from './components/CreateCampaignForm';
+import LoadingModal from './components/LoadignModal';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="*" element={<h1> PAGE NOT FOUND </h1>} />
         </Routes>
       </Router>
+      <LoadingModal />
     </div>
   );
 }
