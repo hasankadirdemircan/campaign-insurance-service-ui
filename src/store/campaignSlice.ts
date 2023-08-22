@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CampaignData } from '../features/campaign/models/campaignData'; // Modelleri içe aktar
-import { deleteCampaign, fetchCampaigns } from '../api/campaignApi'; // Yeni api dosyasından işlemi içe aktar
+import { createCampaign, deleteCampaign, fetchCampaigns } from '../api/campaignApi'; // Yeni api dosyasından işlemi içe aktar
 
 export interface CampaignState {
   campaigns: CampaignData[];
@@ -36,6 +36,15 @@ const campaignSlice = createSlice({
       state.campaigns = state.campaigns.filter(campaign => campaign.campaign.id !== deletedCampaignId);
       state.loading = false;
     });
+    builder.addCase(createCampaign.fulfilled, (state, action) => {
+      state.campaigns.push(action.payload); //yeni ekleme var sakın state.campaign = action.payload deme!
+      state.loading = false; // Yükleme tamamlandı, loading durumunu false yap
+    });
+    builder.addCase(createCampaign.pending, (state) => {
+      state.loading = true; // Yükleme işlemi başlatıldığında loading durumu true yap
+
+    });
+
   },
 });
 

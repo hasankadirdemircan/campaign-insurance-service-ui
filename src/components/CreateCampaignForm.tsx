@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Col, Row } from 'react-bootstrap';
 import { CampaignCategory } from '../features/campaign/models/campaignCategory';
-import { CampaignStatus } from '../features/campaign/models/campaignStatus';
-import { Campaign } from '../features/campaign/models/campaign';
 import './CreateCampaignForm.css';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store/store';
+import { CreateCampaignRequest } from '../features/campaign/models/createCampaignRequest';
+import { createCampaign } from '../api/campaignApi';
+import { useNavigate } from 'react-router-dom'; //backende createcampaign isteği sonrasında CampaignList sayfasına dön. DOM
+
 
 const CreateCampaignForm: React.FC = () => {
-    const [formData, setFormData] = useState<Campaign>({
+    const dispatch: AppDispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [formData, setFormData] = useState<CreateCampaignRequest>({
         id: 0,
         campaignTitle: '',
         campaignDetail: '',
         campaignCategory: CampaignCategory.HAYAT_INSURANCE,
-        campaignStatus: CampaignStatus.PENDING,
     });
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -30,10 +36,16 @@ const CreateCampaignForm: React.FC = () => {
         }));
     };
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        // formData'nın submit işlemleri burada yapılacak
-        console.log(formData);
+        try {
+            await dispatch(createCampaign(formData));
+            console.log(formData);
+            // İşlem tamamlandığında navigate işlemi gerçekleştir
+            navigate("/");
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (

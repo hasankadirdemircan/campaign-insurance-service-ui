@@ -15,13 +15,14 @@ const LoadingModal: React.FC = () => {
     >
 
       <Modal.Body className='modal-content'>
-        <div className="d-flex justify-content-center align-items-center">
+        <div className="d-flex justify-content-between align-items-center">
           <Spinner animation="grow" role="status" variant="primary" />
           <div className="mx-2">
             <span>
               İşlem Yapılıyor Lütfen Bekleyiniz.
             </span>
           </div>
+          <Spinner animation="grow" role="status" variant="primary" />
         </div>
       </Modal.Body>
 
