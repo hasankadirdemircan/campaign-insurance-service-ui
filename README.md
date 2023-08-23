@@ -1,3 +1,14 @@
+# Insurance Campaign Service
+
+## Project Infrastructure
+
+### Before Starting
+
+## Tech Stack
+
+
+
+
 sudo npx create-react-app . --template typescript 
 sudo npm install bootstrap react-bootstrap
 
