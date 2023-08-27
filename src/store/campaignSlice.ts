@@ -5,12 +5,13 @@ import { createCampaign, deleteCampaign, fetchCampaigns } from '../api/campaignA
 export interface CampaignState {
   campaigns: CampaignData[];
   loading: boolean; // Loading durumu
-
+  error: string | null; // Hata durumu için string veya null
 }
 
 const initialState: CampaignState = {
   campaigns: [],
-  loading: false
+  loading: false,
+  error: null,
 };
 
 const campaignSlice = createSlice({
@@ -26,6 +27,11 @@ const campaignSlice = createSlice({
     builder.addCase(fetchCampaigns.fulfilled, (state, action) => {
       state.campaigns = action.payload;
       state.loading = false; // Yükleme tamamlandı, loading durumunu false yap
+
+    });
+    builder.addCase(fetchCampaigns.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message; // action.error'dan hata mesajını alarak atama yapılır.
 
     });
     builder.addCase(deleteCampaign.pending, (state) => {
