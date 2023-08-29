@@ -1,8 +1,9 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { CreateCampaignRequest } from '../features/campaign/models/createCampaignRequest';
+import { CampaignData } from '../features/campaign/models/campaignData';
 
-export const fetchCampaigns = createAsyncThunk('campaigns/fetchCampaigns', async (_, thunkAPI) => {
+export const fetchCampaigns = createAsyncThunk<CampaignData[], void, { rejectValue: { message: string } }>('campaigns/fetchCampaigns', async (_, thunkAPI) => {
   try {
     const response = await fetch('http://localhost:8080/v1/insurance/campaigns', {
       headers: {
@@ -11,13 +12,14 @@ export const fetchCampaigns = createAsyncThunk('campaigns/fetchCampaigns', async
       },
     });
     if (!response.ok) {
-      const errorMessage = await response.text();
+      console.log("errr")
+      const errorMessage = await response.json();
       return thunkAPI.rejectWithValue(errorMessage); // Hata mesajını action.payload içine eklenir.
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    return thunkAPI.rejectWithValue('An error occurred'); // Genel hata mesajı
+    return thunkAPI.rejectWithValue({ message: "An error occurred" }); // Genel hata mesajı
   }
 });
 

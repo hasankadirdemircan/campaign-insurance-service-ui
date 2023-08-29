@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
 import CreateCampaignForm from './components/CreateCampaignForm';
 import LoadingModal from './components/LoadignModal';
+import ErrorModal from './components/ErrorModal';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         </Routes>
       </Router>
       <LoadingModal />
+      <ErrorModal />
     </div>
   );
 }
