@@ -12,7 +12,6 @@ export const fetchCampaigns = createAsyncThunk<CampaignData[], void, { rejectVal
       },
     });
     if (!response.ok) {
-      console.log("errr")
       const errorMessage = await response.json();
       return thunkAPI.rejectWithValue(errorMessage); // Hata mesajını action.payload içine eklenir.
     }
@@ -38,7 +37,7 @@ export const deleteCampaign = createAsyncThunk('campaigns/deleteCampaign', async
       // İstek başarılı bir şekilde tamamlandı.
       return null;
     } else {
-      const errorMessage = await response.text();
+      const errorMessage = await response.json();
       return thunkAPI.rejectWithValue(errorMessage);
     }
   } catch (error) {
@@ -58,10 +57,9 @@ export const createCampaign = createAsyncThunk('campaigns/createCampaign', async
     });
     if (response.ok) {
       const campaignData = await response.json(); // İsteğin yanıtını JSON olarak al
-      console.log(campaignData)
       return campaignData; // Kampanya verisini döndür, bunu slice içerisnde push etmek için kullanıyoruz.
     } else {
-      const errorMessage = await response.text();
+      const errorMessage = await response.json();
       return thunkAPI.rejectWithValue(errorMessage);
     }
   } catch (error) {
